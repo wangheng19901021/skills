@@ -1,6 +1,10 @@
+---
+name: code-review-gate
+description: Use when generating or reviewing Java backend code (Service/Controller/Mapper) that touches a database, Redis, MQ, RPC, SMS/email, or file writes. Applies a 5-gate checklist (requirements review, concurrency safety, transaction boundaries, null-safety, security) distilled from real production incidents, so AI-generated code doesn't repeat known bugs.
+---
+
 # Code Review Gate
 
-## 描述
 为 Java 后端项目提供基于"五关审查清单"的代码生成与审查能力。
 
 ## 适用场景

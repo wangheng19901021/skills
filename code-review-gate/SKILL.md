@@ -20,6 +20,7 @@ description: Use when generating or reviewing Java backend code (Service/Control
    - 第三关：事务边界（references/transaction.md）
    - 第四关：空指针防护（references/null-safety.md）
    - 第五关：安全检查卡（references/security.md）
+   - 补充规则：手动忽略决策（references/ignore-decision.md）——紧急场景确需忽略 AI 警告时，必须先回答四个问题并回填 PR 评论模板
 3. 每发现一处违反规则的地方，必须给出修改后的代码
 4. 如果不确定项目中的"外部调用"范围或并发量级，必须向用户提问，禁止猜测
 

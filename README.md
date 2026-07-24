@@ -1,4 +1,4 @@
-# 个人 Claude Code Skills 仓库
+﻿# 个人 Claude Code Skills 仓库
 
 这里收集我日常工作中沉淀的 Claude Code Skills。
 
@@ -17,6 +17,12 @@
 
 **补充规则：**
 - 手动忽略决策（ignore-decision.md）：紧急场景确需忽略 AI 审查警告时，必须先回答的四个决策问题，附决策速查表和可直接复制的 PR 评论模板
+
+### `team-code-review`
+
+`code-review-gate` 的**团队级规则扩展模板**。个人 Skill 放 `~/.claude/skills/` 跟着人走，团队规则放项目 `.claude/skills/` 跟着仓库走，Claude Code 两个位置都会扫描，天然同时生效。
+
+每条规则标注来源（谁加的、踩了什么坑、什么时候加的），规则打架时找当事人聊。fork 之后替换成你们团队自己的踩坑记录即可。
 
 ## 使用方法
 

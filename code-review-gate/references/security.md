@@ -26,6 +26,17 @@ if (isPrivateIp(uri.getHost())) throw new IllegalArgumentException();
 ## 日志脱敏
 `log.info("user: {}", user)` 前确认 `toString()` 不会打印手机号、身份证、Token。
 敏感字段加 @Mask 注解或覆盖 toString()。
+```java
+// 危险：Lombok @Data 自动生成的 toString() 原样打印所有字段
+log.info("user: {}", user);
+
+// 正确：覆盖 toString()，敏感字段脱敏后输出
+@Override
+public String toString() {
+    return "User(id=" + id +
+           ", mobile=" + MaskUtil.maskMobile(mobile) + ")";  // 138****5678
+}
+```
 
 ## 越权
 看 userId 从哪来：是从 token / session 解出来的当前用户 ID，还是从请求参数里直接拿的？

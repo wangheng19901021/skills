@@ -39,17 +39,19 @@ public void download(@RequestParam String url, HttpServletResponse response) {
 
 private boolean isPrivateIp(String host) {
     // 简单判断：10.x、172.16-31.x、192.168.x、127.x、localhost
+    // 注意 169.254.x（link-local）：云元数据接口 169.254.169.254 是 SSRF 最经典的攻击目标
     return host.equals("localhost")
         || host.startsWith("127.")
         || host.startsWith("10.")
         || host.startsWith("192.168.")
+        || host.startsWith("169.254.")
         || host.matches("^172\\.(1[6-9]|2[0-9]|3[0-1])\\..*");
 }
 ```
 
 ### 关键点
 1. 域名必须配置白名单
-2. 必须拦截私有 IP 段和 localhost
+2. 必须拦截私有 IP 段、localhost 和 link-local 段（169.254.x，云元数据接口所在段）
 3. 如果业务无法提供域名白名单，直接拒绝该需求，禁止在代码层绕过
 
 ## 进阶：IP 白名单优于域名白名单

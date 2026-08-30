@@ -1,0 +1,10 @@
+{
+  "name": "mcp-review-rules-client",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "MCP client demo for review-rules-server (SSE transport)",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0"
+  }
+}

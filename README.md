@@ -39,6 +39,14 @@
 
 这个 Skill 不是一次性写完的静态文档，而是持续迭代的项目故障知识库。每遇到一次线上问题，就把对应的检查点补充到 `references/` 下的相应文件中。
 
+## 配套 Demo
+
+### `demo/mcp-review-rules-server`
+
+把 41 条规则库包装成 MCP Server 的 Spring AI 实操 demo（Spring Boot 4.1.1 + Spring AI 2.0.1 + JDK 21），
+内置 3 条完整示例规则，含一键复跑脚本和真实运行输出，是《Java 手写第一个 MCP Server》一文的配套工程。
+详见其 [README](demo/mcp-review-rules-server/README.md)。
+
 ## 相关文章
 
 - [编码时间降了 65%，但我反而更焦虑了]

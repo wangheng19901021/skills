@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    banner-mode: "off"
+    web-application-type: servlet
+  ai:
+    mcp:
+      server:
+        name: review-rules-server
+        version: 0.0.1
+        protocol: SSE   # Spring AI 2.0 起 SSE 已 deprecated，官方推荐 STREAMABLE；demo 为配合 SSEClientTransport 沿用 SSE
+
+logging:
+  level:
+    root: warn
+    com.example.reviewrules: info   # 必须放行：Boot 的 "Started ..." 日志挂在主类 logger 下
+    org.springframework.boot: info
+    org.apache.catalina.core: info
+    io.modelcontextprotocol: info
+    org.springframework.ai.mcp: info

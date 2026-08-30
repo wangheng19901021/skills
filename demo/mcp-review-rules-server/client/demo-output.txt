@@ -1,0 +1,57 @@
+===== 环境信息 =====
+java version "21.0.8" 2025-07-15 LTS
+Spring Boot 4.1.1 + Spring AI 2.0.1, Maven 3.9.16
+
+===== 服务端启动日志摘录 =====
+2026-08-21T22:31:07.134+08:00  INFO 4516 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-08-21T22:31:07.169+08:00  INFO 4516 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-08-21T22:31:08.596+08:00  INFO 4516 --- [           main] o.s.a.m.s.c.a.McpServerAutoConfiguration : Registered tools: 3
+2026-08-21T22:31:09.005+08:00  INFO 4516 --- [           main] c.e.r.McpReviewRulesApplication          : Started McpReviewRulesApplication in 5.646 seconds (process running for 7.037)
+
+===== MCP 客户端运行输出 =====
+[client] 连接 MCP Server: http://localhost:8080/sse ...
+[client] SSE 连接成功
+
+[client] tools/list 结果：共 3 个工具
+  - getReviewRule : 按规则 id 获取单条审查规则全文，四段式：适用条件、决策树、禁止写法、正反例
+  - listReviewRules : 列出团队 AI 代码审查规则库的完整目录：五关各多少条、规则总量、来源构成
+  - searchReviewRules : 按关键词模糊搜索审查规则，返回命中规则的 id、所属关卡和摘要
+
+[client] callTool getReviewRule({ ruleId: "ssrf-metadata" }) 返回：
+------------------------------------------------------------
+规则 ssrf-metadata（安全关 · SSRF 白名单必须拦内网段与云元数据接口）
+来源：推演立规
+
+【适用条件】
+任何由用户传入 URL、由服务端发起请求的代码：头像抓取、网页摘要、
+webhook 回调、图片转存。攻击面是服务端代替攻击者访问内网。
+
+【决策树】
+1. URL 是用户可控的吗？
+   ├─ 否 → 走普通 HTTP 审查
+   └─ 是 → 2
+2. 白名单校验覆盖了哪些目标？
+   ├─ 只拦 127.0.0.1 → 不合格，必须全量拦截：
+   │   10.0.0.0/8、172.16.0.0/12、192.168.0.0/16、
+   │   169.254.169.254（云元数据接口！Capital One 泄露打的就是它）、
+   │   [::1]、0.0.0.0，以及 DNS 重绑定（解析后再校验一次）
+   └─ 域名白名单 + 解析后 IP 二次校验 → 合格
+
+【禁止写法】
+禁止只拦 127.0.0.1。云上 SSRF 的头号目标是 169.254.169.254，
+拿到临时凭证等于拿到整台机器的权限。也禁止只校验域名不校验解析结果。
+
+【正反例】
+✗ 反例：
+  if (url.contains("127.0.0.1")) { throw new IllegalArgumentException(); }
+  httpGet(url); // 169.254.169.254/latest/meta-data/iam/ 畅通无阻
+✓ 正例：
+  InetAddress addr = InetAddress.getByName(host); // 先解析
+  if (addr.isLoopbackAddress() || addr.isSiteLocalAddress()
+          || addr.isLinkLocalAddress()           // 169.254.0.0/16
+          || !domainWhitelist.contains(host)) {
+      throw new SecurityException("SSRF blocked: " + host);
+  }
+
+------------------------------------------------------------
+[client] 连接已关闭，demo 结束

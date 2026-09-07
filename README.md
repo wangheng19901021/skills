@@ -1,4 +1,4 @@
-﻿# 个人 Claude Code Skills 仓库
+# 个人 Claude Code Skills 仓库
 
 这里收集我日常工作中沉淀的 Claude Code Skills。
 
@@ -49,11 +49,23 @@
 
 ## 相关文章
 
-- [编码时间降了 65%，但我反而更焦虑了]
-- [AI 30 秒写代码，我审 5 分钟：这 5 关不过，不敢合]
-- [五关清单吃灰 3 周后，我让 AI 自己按我的规则写代码]
-- [3个同事装上我的审查Skill后，PR里一半评论消失了：CR从找bug变成了做决策]
-- [深夜11点，AI标了3条警告我全点了忽略：不是胆大，是答完了这4个问题]
+规则库里每条规则背后的真实事故，都写成了复盘文章。
+
+**AI 代码审查五关·实战系列（公众号「硅基书斋」，已收官）**
+
+- [五个月，11 个线上 bug，41 条规则：我把团队的 AI 审查 Skill 开源了](https://mp.weixin.qq.com/s/Sz8a5S9ln2Ff_rGYDzYldg)
+- 并发关：[7 个并发 bug 其实是同一个 bug：我把堵住它的 9 条规则开源了](https://mp.weixin.qq.com/s/MtEcmKxIeFKETnG6XZ5cbw)
+- 事务关：[事务里调 RPC 的两种死法：一种我们真炸过，一种没炸但规则先立了](https://mp.weixin.qq.com/s/Od_N34fFl9Gz2K3qiYVy3g)
+- 安全关：[一次没炸过，却立了最多的 11 条规则：AI 代码的安检卡](https://mp.weixin.qq.com/s/3SXMaQHKKB7OqCVjHZv2tA)
+- 团队关：[3 条真规则，好过 41 条抄来的：团队 AI 审查规则库的搭法和活法](https://mp.weixin.qq.com/s/0rZ-kiJzZWjqjE8MVbDeEQ)
+
+**Skill × MCP 实战系列（更新中）**
+
+- [Skill 和 MCP 到底什么区别？Java 后端一篇讲透](https://blog.csdn.net/u010567709/article/details/164043833)
+- Java 手写第一个 MCP Server：Spring AI MCP 半小时跑通（demo 即本仓库 `demo/mcp-review-rules-server`）——[知乎专栏版](https://zhuanlan.zhihu.com/p/2078763930764174335)｜[CSDN 版见作者主页「实战skill」专栏](https://blog.csdn.net/u010567709)
+- 知乎 4.3 万阅读回答：[vibe coding 如果长期使用，会不会有一天出现无法解决的 bug？](https://www.zhihu.com/question/2004911938891715573/answer/2078128129848112627)
+
+更早的「AI 协作实验室」6 篇复盘（bug 从月均 11 降到 2 的五个月全程）见 [CSDN 作者主页](https://blog.csdn.net/u010567709)。
 
 ## License
 

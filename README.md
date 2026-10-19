@@ -1,5 +1,7 @@
 # 个人 Claude Code Skills 仓库
 
+> 📖 配套电子书《Java 团队的 AI 代码审查实战》已上架：41 条规则逐条注释 + 11 个线上 bug 完整复盘（95 页）→ https://mbd.pub/o/bread/YZaVmphpZA==
+
 这里收集我日常工作中沉淀的 Claude Code Skills。
 
 ## 当前 Skill

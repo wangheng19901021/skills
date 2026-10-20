@@ -2,6 +2,16 @@
 
 > 📖 配套电子书《Java 团队的 AI 代码审查实战》已上架：41 条规则逐条注释 + 11 个线上 bug 完整复盘（95 页）→ https://mbd.pub/o/bread/YZaVmphpZA==
 
+## English
+
+A curated set of Claude Code Skills for Java backend teams adopting AI-assisted coding:
+
+- **code-review-gate** — a five-gate code review skill (concurrency / transaction / security / NPE / requirement review) built from 41 rules: 13 distilled from real production incidents, 28 from architecture review. Measured over 5 months on a 4-person Java team where AI writes the code: online bugs 11/month → 2/month, PR lead time 32h → 9h.
+- **team-code-review** — team-level rules template; each rule records its origin (who added it, which incident). Fork and replace with your own scars.
+- **demo/** — a practice MCP Server (Spring AI) with a one-command rerun script, for comparing Skill vs MCP overhead hands-on.
+
+Companion ebook (Chinese): 《Java 团队的 AI 代码审查实战》 → https://mbd.pub/o/bread/YZaVmphpZA==
+
 这里收集我日常工作中沉淀的 Claude Code Skills。
 
 ## 当前 Skill
